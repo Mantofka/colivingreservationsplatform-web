@@ -30,7 +30,7 @@ export const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent, data: { roles: [RoleEnum.ColivingOwner, RoleEnum.Administrator, RoleEnum.Tenant] } },
       { path: 'coliving/:colivingId', component: ColivingInformationComponent, resolve: { coliving: ColivingResolver }, data: { roles: [RoleEnum.ColivingOwner, RoleEnum.Administrator, RoleEnum.Tenant] } },
       { path: 'coliving/edit/:colivingId', component: CreateUpdateColivingComponent, resolve: { coliving: ColivingResolver }, data: { roles: [RoleEnum.ColivingOwner, RoleEnum.Administrator] } },
-      { path: 'coliving/create', component: CreateUpdateColivingComponent, resolve: { coliving: ColivingResolver }, data: { roles: [RoleEnum.ColivingOwner, RoleEnum.Administrator] } },
+      { path: 'ccoliving/create', component: CreateUpdateColivingComponent, data: { roles: [RoleEnum.ColivingOwner, RoleEnum.Administrator] } },
       { path: 'coliving/view/:colivingId', component: CreateUpdateColivingComponent, resolve: { coliving: ColivingResolver }, data: { roles: [RoleEnum.ColivingOwner, RoleEnum.Administrator] } },
       { path: 'coliving/view/:colivingId/rooms', component: RoomsComponent, data: { roles: [RoleEnum.ColivingOwner, RoleEnum.Administrator] } },
       { path: 'coliving/view/:colivingId/rooms/create', component: CreateUpdateRoomComponent, data: { roles: [RoleEnum.ColivingOwner, RoleEnum.Administrator] } },

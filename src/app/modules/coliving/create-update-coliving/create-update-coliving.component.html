@@ -5,7 +5,7 @@
             <app-base-input [label]="'Address'" formControlName="address"></app-base-input>
             <app-base-input [label]="'Description'" formControlName="description"></app-base-input>
             <app-base-input [label]="'Email'" formControlName="email"></app-base-input>
-            <div class="labas">
+            <div *ngIf="isAdministrator" class="labas">
                 <label>Coliving Owner</label>
                 <p-select formControlName="userId" [options]="ownersList()" optionValue="id" optionLabel="fullName" placeholder="Select a Coliving Owner" />
             </div>

@@ -18,7 +18,6 @@ export class TenantDashboardComponent {
   colivings = toSignal(this.colivingSerice.getList())
 
   onColivingClick(coliving: any) {
-    console.log(coliving)
-    this.router.navigate(['tenant', 'coliving', coliving.id]);
+    this.router.navigate(['/coliving', coliving.id]);
   }
 }

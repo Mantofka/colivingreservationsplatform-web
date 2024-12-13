@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ColivingService } from '../services/coliving.service';
 import { ButtonModule } from 'primeng/button';
@@ -12,7 +12,6 @@ import { FormContainerWrapperComponent } from "../../../shared/form-container-wr
 import { RoomListComponent } from '../../rooms/room-list/room-list.component';
 import { MessageSeverity } from '../../../shared/models/message';
 import { RoleEnum } from '../../../shared/models/roles';
-import { AutoComplete, AutoCompleteCompleteEvent, AutoCompleteModule } from 'primeng/autocomplete';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { AuthService } from '../../../services/auth.service';
 import { SelectModule } from 'primeng/select';
@@ -52,24 +51,11 @@ export class CreateUpdateColivingComponent {
       email: [this.colivingObject?.email || ''],
       userId: [this.colivingObject?.userId || null],
     });
-    effect(() => {
-      console.log(this.ownersList())
-    })
   }
 
-  filterCountry(event: AutoCompleteCompleteEvent) {
-    let filtered: any[] = [];
-    let query = event.query;
-    console.log(event)
-    // for (let i = 0; i < (this.countries as any[]).length; i++) {
-    //     let country = (this.countries as any[])[i];
-    //     if (country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-    //         filtered.push(country);
-    //     }
-    // }
-
-    // this.filteredCountries = filtered;
-}
+  get isAdministrator(){
+    return (localStorage.getItem('role') || '') as RoleEnum;
+  }
 
   onSubmit(){
     const form = this.form.getRawValue();
@@ -99,10 +85,10 @@ export class CreateUpdateColivingComponent {
 
   routeAfterAction(){
     if(this.role === this.roleType.ColivingOwner){
-      this.router.navigate(['/coliving', 'dashboard']);
+      this.router.navigate(['/dashboard']);
     }
     else if(this.role === this.roleType.Administrator) {
-      this.router.navigate(['/administrator', 'dashboard']);
+      this.router.navigate(['/dashboard']);
     }
   }
 }

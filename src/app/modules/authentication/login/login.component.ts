@@ -36,13 +36,13 @@ export class LoginComponent {
         Cookies.set('jwt', res.token, { expires: 7 });
         localStorage.setItem('role', res.roles[0]);
         if(this.form.value.role === RoleEnum.Tenant){
-          this.router.navigate(['/tenant', 'dashboard']);
+          this.router.navigate(['/dashboard']);
         } 
         if(this.form.value.role === RoleEnum.ColivingOwner){
-          this.router.navigate(['/coliving', 'dashboard']);
+          this.router.navigate(['/dashboard']);
         }
         if(this.form.value.role === RoleEnum.Administrator){
-          this.router.navigate(['/administrator', 'dashboard']);
+          this.router.navigate(['/dashboard']);
         }
       }
     });
