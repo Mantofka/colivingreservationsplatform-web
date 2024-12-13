@@ -1,0 +1,25 @@
+<div (click)="onRoomClick()" class="container">
+    <img class="container--image" src="assets/room.svg" alt="Room" />
+    <div>
+        <h2 class="title">{{room().description}}</h2>
+        <div class="container__contents">
+            <div class="container__content">
+                <img class="container__content--image" src="assets/roomNumber.svg" alt="Room number" />
+                <p class="description">{{room().number}}</p>
+            </div>
+            <div class="container__content">
+                <img class="container__content--image" src="assets/size.svg" alt="Room size" />
+                <p class="description">{{room().size}}m2</p>
+            </div>
+            <div class="container__content">
+                <img class="container__content--image" src="assets/floorNumber.svg" alt="Floor Number" />
+                <p class="description">{{room().floorNumber}}</p>
+            </div>
+        </div>
+        <div class="container__content">
+            <img class="container__content--image" src="assets/euro.svg" alt="Euro sign" />
+            <p class="container__content--price">{{room().price}}</p>
+        </div>
+        <i *ngIf="permitDeleteAction()" (click)="onRoomDeleteClick($event)" class="pi pi-trash"></i>
+    </div>
+</div>

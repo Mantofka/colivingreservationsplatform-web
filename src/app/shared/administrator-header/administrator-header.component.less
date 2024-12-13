@@ -1,0 +1,29 @@
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    font-weight: 700;
+
+    div a {
+        text-decoration: none;
+        color: #000;
+        transition: all 150ms ease-in-out;
+        font-size: 1.2rem;
+        &:hover {
+            color: grey;
+        }
+    }
+
+    &__links {
+        display: flex;
+        gap: 1rem;
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    gap: 1.5rem;
+}

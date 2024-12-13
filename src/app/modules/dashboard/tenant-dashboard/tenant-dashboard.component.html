@@ -1,0 +1,6 @@
+<div class="coliving-list">
+    @for(coliving of colivings(); track coliving; let i = $index){
+        <app-coliving-card (onClick)="onColivingClick(coliving)" [coliving]="coliving"></app-coliving-card>
+    }
+</div>
+

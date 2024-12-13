@@ -1,0 +1,23 @@
+<app-form-container-wrapper [title]="this.colivingObject?.id ? 'Coliving Edit' : 'Coliving creation'">
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <app-base-input [label]="'Coliving name'" formControlName="name"></app-base-input>
+            <app-base-input [label]="'Address'" formControlName="address"></app-base-input>
+            <app-base-input [label]="'Description'" formControlName="description"></app-base-input>
+            <app-base-input [label]="'Email'" formControlName="email"></app-base-input>
+            <div class="labas">
+                <label>Coliving Owner</label>
+                <p-select formControlName="userId" [options]="ownersList()" optionValue="id" optionLabel="fullName" placeholder="Select a Coliving Owner" />
+            </div>
+            <button class="button" type="submit" pButton>{{this.colivingObject?.id ? "Edit" : "Create"}}</button>
+        </form>
+    </div>
+</app-form-container-wrapper>
+
+@if(this.colivingObject?.id) {
+<div class="room-list-container">
+    <h1>Rooms</h1>
+    <app-room-list></app-room-list>
+</div>
+
+}

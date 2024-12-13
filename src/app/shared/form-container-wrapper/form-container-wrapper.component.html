@@ -1,0 +1,10 @@
+<div class="header">
+    <div class="header__go-back" (click)="onBackClick()">
+        {{backTitle()}}
+    </div>
+    <h2>{{title()}}</h2>
+    <button class="submit-button" label="Save" type="submit" form="form" severity="primary">Submit</button>
+</div>
+<div class="container">
+    <ng-content></ng-content>
+</div>

@@ -1,0 +1,11 @@
+<div (click)="onTenantClick()" class="container">
+    <img class="container--image" src="assets/room.svg" alt="Room" />
+    <div class="container__contents">
+        <p class="title">{{tenant()?.name}}</p>
+        <p class="title">{{tenant()?.surname}}</p>
+        <p class="title">{{tenant()?.birthDate}}</p>
+        <p class="title">{{tenant()?.phoneNumber}}</p>
+        <p class="title">{{tenant()?.email}}</p>
+    </div>
+    <i *ngIf="permitDeleteAction()" (click)="onTenantDeleteClick($event)" class="pi pi-trash"></i>
+</div>

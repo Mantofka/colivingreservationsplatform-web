@@ -1,0 +1,19 @@
+<div>
+    <div class="header">
+        <p-button label="Add Room" (onClick)="onRoomCreateClick()" severity="secondary"></p-button>
+    </div>
+    <div class="room-list">
+        @if(rooms()?.length){
+            @for(room of rooms(); track room; let i = $index){
+                <app-room-card [permitDeleteAction]="hasRightToDelete" (onDeleteClick)="openDeleteColivingModal(room.id)" (onClick)="onRoomClick(room.id)" [room]="room"></app-room-card>
+            }
+        } @else {
+            <div class="no-rooms">
+                <p>Coliving does not have rooms.</p>
+            </div>
+        }
+    </div>
+</div>
+<app-room-delete-modal #deleteModal (onConfirmHandler)="onRoomDeleteClick()"></app-room-delete-modal>
+
+

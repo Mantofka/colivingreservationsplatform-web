@@ -1,0 +1,12 @@
+@if(this.userRole === roleType.ColivingOwner){
+    <app-coliving-owner-dashboard />
+}
+@else if(this.userRole === roleType.Administrator){
+    <app-administrator-dashboard />
+} @else {
+    <app-tenant-dashboard />
+}
+
+
+
+

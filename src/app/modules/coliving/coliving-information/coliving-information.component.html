@@ -1,0 +1,13 @@
+<div>
+    <div>
+        <h2>{{colivingObject?.name}}</h2>
+        <p class="description">{{colivingObject?.address}}</p>
+        <p class="description">{{colivingObject?.email}}</p>
+        <p class="description">{{colivingObject?.description}}</p>
+    </div>
+    <div class="room-list">
+        @for(room of rooms(); track room; let i = $index){
+            <app-room-card (click)="assignTenant(room)" [room]="room"></app-room-card>
+        }
+    </div>
+</div>

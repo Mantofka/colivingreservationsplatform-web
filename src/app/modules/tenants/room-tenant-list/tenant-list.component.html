@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Tenants assigned to this room</h1>
+    <div class="tenant-list">
+        @if(tenants()?.length){
+            @for(tenant of tenants(); track tenant; let i = $index){
+                <app-tenant-list-card [tenant]="tenant"></app-tenant-list-card>
+            }
+        } @else {
+            <div class="no-tenants">
+                <p>No tenants in the room</p>
+            </div>
+        }
+    </div>
+    <h1>All tenants</h1>
+    <div class="tenant-list">
+        @if(allTenants()?.length){
+            @for(tenant of allTenants(); track tenant; let i = $index){
+                <app-tenant-list-card (onClick)="onTenantClick(tenant.id)" [tenant]="tenant"></app-tenant-list-card>
+            }
+        } @else {
+            <div class="no-tenants">
+                <p>No tenants</p>
+            </div>
+        }
+    </div>
+</div>
+
+

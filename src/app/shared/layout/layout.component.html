@@ -1,0 +1,15 @@
+<div class="container">
+    @if(role === roleType.Tenant){
+        <app-tenant-header />
+    } 
+    @else if(role === roleType.ColivingOwner){
+        <app-coliving-owner-header />
+    }
+    @else if(role === roleType.Administrator){
+        <app-administrator-header />
+    }
+    <router-outlet></router-outlet>
+    <app-footer />
+</div>
+
+

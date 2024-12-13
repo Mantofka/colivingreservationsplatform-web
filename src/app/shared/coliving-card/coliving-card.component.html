@@ -1,0 +1,10 @@
+<div (click)="onColivingClick()" class="container">
+    <img class="container--image" src="assets/house-grey.svg" alt="Kolivio logo" />
+    <div>
+        <h2 class="title">{{coliving().name}}</h2>
+        <p class="description">{{coliving().address}}</p>
+        <p class="description">{{coliving().email}}</p>
+        <p class="description">{{coliving().description}}</p>
+        <i (click)="onColivingDeleteClick($event)" class="pi pi-trash"></i>
+    </div>
+</div>

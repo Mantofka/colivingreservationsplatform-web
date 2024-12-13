@@ -1,0 +1,11 @@
+<app-form-container-wrapper [title]="'Profile'">
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <app-base-input [label]="'Name'" formControlName="name"></app-base-input>
+            <app-base-input [label]="'Surname'" formControlName="surname"></app-base-input>
+            <app-base-input [label]="'Phone Number'" formControlName="phoneNumber"></app-base-input>
+            <app-base-input [label]="'Email'" formControlName="email"></app-base-input>
+            <button type="submit" pButton>{{this.tenant?.id ? "Edit" : "Create"}}</button>
+        </form>
+    </div>
+</app-form-container-wrapper>

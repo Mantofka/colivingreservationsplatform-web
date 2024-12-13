@@ -1,0 +1,20 @@
+<div class="container">
+    <div>
+        <img class="hamburger" (click)="toggleMenu()" src="assets/hamburger.svg" alt="Hamburger menu bars" />
+    </div>
+    @if(isOpen()){
+        <div class="menu">
+            <div class="link">
+                <a (click)="performNavigation()" [routerLink]="['/dashboard']" routerLinkActive="active" title="">
+                    Dashboard
+                  </a>
+            </div>
+            <div class="link">
+                <a (click)="performNavigation()" [routerLink]="['/tenants']" routerLinkActive="active" title="">
+                    Tenants
+                  </a>
+            </div>
+
+        </div>
+    }
+</div>

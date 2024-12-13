@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="left-block">
+        <h2 class="title">Create an account</h2>
+        <p class="description">Already have an account? Sign in</p>
+        <div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <app-base-input [label]="'Username'" formControlName="username"></app-base-input>
+                <app-base-input [label]="'Name'" formControlName="name"></app-base-input>
+                <app-base-input [label]="'Surname'" formControlName="surname"></app-base-input>
+                <app-base-input [label]="'Email address'" formControlName="email"></app-base-input>
+                <app-base-input [label]="'Password'" formControlName="password"></app-base-input>
+                <div class="radio-selection">
+                    <p-radiobutton inputId="tenant" value="Tenant" formControlName="role" />
+                    <label for="tenant">Tenant</label>
+                </div>
+                <div class="radio-selection">
+                    <p-radiobutton inputId="coliving-owner" value="ColivingOwner" formControlName="role" />
+                    <label for="coliving-owner">Coliving Owner</label>
+                </div>
+                <button type="submit" pButton>Create an account</button>
+              </form>
+        </div>
+    </div>
+    <div class="right-block">
+        <img src="assets/kolivio.svg" alt="Register" />
+    </div>
+</div>
+
+
+
