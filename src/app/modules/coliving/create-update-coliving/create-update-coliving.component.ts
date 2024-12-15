@@ -54,7 +54,7 @@ export class CreateUpdateColivingComponent {
   }
 
   get isAdministrator(){
-    return (localStorage.getItem('role') || '') as RoleEnum;
+    return ((localStorage.getItem('role') || '') as RoleEnum) === RoleEnum.Administrator;
   }
 
   onSubmit(){
