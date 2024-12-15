@@ -19,15 +19,15 @@ export class ColivingOwnerDashboardComponent {
   messageService = inject(MessageService);
   router = inject(Router);
   
-  colivings = toSignal(this.colivingSerice.getOwnerColivings())
+  colivings = toSignal(this.colivingSerice.getOwnerColivings(), {initialValue: []})
 
   @ViewChild(ColivingDeleteModalComponent) private modalRef!: ColivingDeleteModalComponent;
 
   onColivingClick(coliving: any) {
-    this.router.navigate(['/coliving', 'coliving', 'edit', coliving.id]);
+    this.router.navigate(['/coliving', 'edit', coliving.id]);
   }
   onColivingCreateClick() {
-    this.router.navigate(['/ccoliving', 'coliving', 'create']);
+    this.router.navigate(['/ccoliving', 'create']);
   }
 
   openDeleteColivingModal(id: string) {
@@ -39,6 +39,7 @@ export class ColivingOwnerDashboardComponent {
       next: () => {
         this.messageService.add({severity:'success', summary:'Success', detail: 'Coliving deleted successfully'});
         this.modalRef?.hideDialog();
+        window.location.reload();
       },
       error: () => {
         this.messageService.add({severity:'error', summary:'Error', detail: 'An error occurred while deleting the coliving'});

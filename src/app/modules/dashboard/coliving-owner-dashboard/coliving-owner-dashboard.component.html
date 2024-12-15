@@ -1,7 +1,9 @@
     <div>
-        <button (click)="onColivingCreateClick()">Create coliving</button>
+        <button class="createColivingButton" (click)="onColivingCreateClick()">Create coliving</button>
         <div class="coliving-list">
-            
+            @if(!colivings().length){
+                <div class="no-coliving">No colivings found</div>
+            }         
             @for(coliving of colivings(); track coliving; let i = $index){
                 <app-coliving-card (onDeleteClick)="openDeleteColivingModal(coliving.id)" (onClick)="onColivingClick(coliving)" [coliving]="coliving"></app-coliving-card>
             }
