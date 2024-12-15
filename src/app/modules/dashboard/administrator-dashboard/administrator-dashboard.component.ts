@@ -42,6 +42,6 @@ export class AdministratorDashboardComponent {
     });
   }
   onColivingCreateClick() {
-    this.router.navigate(['/coliving', 'create']);
+    this.router.navigate(['/ccoliving', 'create']);
   }
 }

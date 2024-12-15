@@ -27,7 +27,7 @@ export class ColivingOwnerDashboardComponent {
     this.router.navigate(['/coliving', 'coliving', 'edit', coliving.id]);
   }
   onColivingCreateClick() {
-    this.router.navigate(['/coliving', 'coliving', 'create']);
+    this.router.navigate(['/ccoliving', 'coliving', 'create']);
   }
 
   openDeleteColivingModal(id: string) {
