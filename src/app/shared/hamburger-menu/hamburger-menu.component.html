@@ -9,12 +9,14 @@
                     Dashboard
                   </a>
             </div>
-            <div class="link">
+            <div *ngIf="isNotTenant" class="link">
                 <a (click)="performNavigation()" [routerLink]="['/tenants']" routerLinkActive="active" title="">
                     Tenants
                   </a>
             </div>
-
+            <div class="logout">
+                <p-button label="Log Out" severity="secondary" (onClick)="onLogoutClick()" />
+            </div>
         </div>
     }
 </div>

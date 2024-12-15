@@ -1,4 +1,6 @@
-<div class="header">
+
+  <div class="header">
+    @if(isDesktop()){
     <a [routerLink]="['/dashboard']" routerLinkActive="active" title="">
         Dashboard
       </a>
@@ -8,4 +10,9 @@
         </a>
         <p-button label="Log Out" severity="secondary" (onClick)="onLogoutClick()" />
       </div>
-</div>
+    } 
+    @else {
+      <app-hamburger-menu />
+    }
+  </div>
+
