@@ -45,11 +45,11 @@ export class RoomListComponent {
   onRoomDeleteClick() {
     this.roomService.deleteRoomById(this.deleteModal.selectedId!).subscribe({
       next: () => {
-        this.messageService.add({severity:'success', summary:'Success', detail: 'Coliving deleted successfully'});
+        this.messageService.add({severity:'success', summary:'Success', detail: 'Room deleted successfully'});
         this.deleteModal?.hideDialog();
       },
       error: () => {
-        this.messageService.add({severity:'error', summary:'Error', detail: 'An error occurred while deleting the coliving'});
+        this.messageService.add({severity:'error', summary:'Error', detail: 'An error occurred while deleting the room'});
       }
     });
   }

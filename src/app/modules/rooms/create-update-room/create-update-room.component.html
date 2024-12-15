@@ -1,15 +1,15 @@
 <app-form-container-wrapper [title]="this.roomObject?.id ? 'Room edit' : 'Room creation'">
 <div class="container">
     <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <app-base-input [label]="'Room description'" formControlName="description"></app-base-input>
-        <app-base-input [label]="'Number'" formControlName="number"></app-base-input>
-        <app-base-input [label]="'Floor Number'" formControlName="floorNumber"></app-base-input>
-        <app-base-input [label]="'Size'" formControlName="size"></app-base-input>
-        <app-base-input [label]="'Price'" formControlName="price"></app-base-input>
+        <app-base-input [formControl]="descriptionControl" [label]="'Room description'" formControlName="description"></app-base-input>
+        <app-base-input [formControl]="numberControl" [label]="'Number'" formControlName="number"></app-base-input>
+        <app-base-input [formControl]="floorNumberControl" [label]="'Floor Number'" formControlName="floorNumber"></app-base-input>
+        <app-base-input [formControl]="sizeControl" [label]="'Size'" formControlName="size"></app-base-input>
+        <app-base-input [formControl]="priceControl" [label]="'Price'" formControlName="price"></app-base-input>
         <button type="submit" pButton>{{this.roomObject?.id ? "Edit" : "Create"}}</button>
     </form>
 </div>
 </app-form-container-wrapper>
-<div class="list">
+<div *ngIf="this.roomObject?.id" class="list">
     <app-tenant-list></app-tenant-list>
 </div>

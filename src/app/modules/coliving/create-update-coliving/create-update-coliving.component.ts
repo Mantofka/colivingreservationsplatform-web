@@ -84,12 +84,7 @@ export class CreateUpdateColivingComponent {
   }
 
   routeAfterAction(){
-    if(this.role === this.roleType.ColivingOwner){
-      this.router.navigate(['/dashboard']);
-    }
-    else if(this.role === this.roleType.Administrator) {
-      this.router.navigate(['/dashboard']);
-    }
+    this.router.navigate(['/dashboard']);
   }
 }
 

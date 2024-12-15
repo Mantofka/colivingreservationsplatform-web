@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './hamburger-menu.component.less'
 })
 export class HamburgerMenuComponent {
-  isOpen = signal(true);
+  isOpen = signal(false);
 
   toggleMenu = () => {
     this.isOpen.set(!this.isOpen())

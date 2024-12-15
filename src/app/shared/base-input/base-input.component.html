@@ -4,4 +4,7 @@
         pInputText 
         id="label()" 
         [(ngModel)]="value" />
+        <div *ngIf="showError" class="error">
+            <span *ngIf="formControl?.errors?.['required']">This field is required.</span>
+          </div>
 </div>
