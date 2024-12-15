@@ -55,15 +55,22 @@ export class CreateUpdateRoomComponent {
           this.messageService.add({severity: MessageSeverity.SUCCESS, summary:'Success', detail: 'Room updated successfully'});
         },
         error: (err) => {
-          this.messageService.add({severity: MessageSeverity.SUCCESS, summary:'Success', detail: 'Coliving updated successfully'});
+          this.messageService.add({severity: MessageSeverity.ERROR, summary:'Error', detail: 'Something went wrong'});
         }
       });
     } else {
-      this.roomService.createRoom(form).subscribe((res) => {
-        this.router.navigate(['/coliving', 'view', this.colivingId, 'rooms']);
+      this.roomService.createRoom(form).subscribe({
+        next: () => {
+          this.router.navigate(['/coliving', 'view', this.colivingId, 'rooms']);
+          this.messageService.add({severity: MessageSeverity.SUCCESS, summary:'Success', detail: 'Room created successfully'});
+        },
+        error: (err) => {
+          this.messageService.add({severity: MessageSeverity.ERROR, summary:'Error', detail: 'Something went wrong'});
+        }
       });
     }
   }
+  
 
   get descriptionControl(): FormControl {
     return this.form.get('description') as FormControl;

@@ -6,6 +6,8 @@ import { AuthenticationService } from '../services/authentication.service';
 import { BaseInputComponent } from '../../../shared/base-input/base-input.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { MessageSeverity } from '../../../shared/models/message';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +21,7 @@ export class RegisterComponent {
   fb = inject(FormBuilder);
   router = inject(Router);
   private authenticationService = inject(AuthenticationService);
+  private messageService = inject(MessageService);
   form!: FormGroup;
 
   constructor() { 
@@ -35,12 +38,8 @@ export class RegisterComponent {
   onSubmit(){
     this.authenticationService.register(this.form.value).subscribe({
       next: () => {
-        if(this.form.value.role === 'Tenant'){
-          this.router.navigate(['/tenant', 'dashboard']);
-        } 
-        if(this.form.value.role === 'ColivingOwner'){
-          this.router.navigate(['/coliving', 'dashboard']);
-        }
+        this.messageService.add({severity: MessageSeverity.SUCCESS, summary:'Success', detail: 'User created successfully'});
+        this.router.navigate(['/login']);
       }
     });
   }
