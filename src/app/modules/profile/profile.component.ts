@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TenantService } from '../tenants/services/tenant.service';
 import { MessageService } from 'primeng/api';
@@ -28,10 +28,11 @@ export class ProfileComponent {
   constructor() { 
     this.form = this.fb.group({
       id: [{value: this.tenant?.id || null, disabled: true}],
-      name: [{value: this.tenant?.name || '', disabled: true}],
-      surname: [this.tenant?.surname || ''],
-      phoneNumber: [this.tenant?.phoneNumber || ''],
-      email: [this.tenant?.email || ''],
+      name: [this.tenant?.name || '', Validators.required],
+      surname: [this.tenant?.surname || '', Validators.required],
+      phoneNumber: [this.tenant?.phoneNumber || '', Validators.required],
+      birthDate: [this.tenant ? new Date(this.tenant?.birthDate) : null],
+      email: [this.tenant?.email || '', Validators.required],
     });
   }
 
@@ -49,4 +50,17 @@ export class ProfileComponent {
       });
     }
   }
+
+          get emailControl(): FormControl {
+            return this.form.get('email') as FormControl;
+          }
+          get phoneNumberControl(): FormControl {
+            return this.form.get('phoneNumber') as FormControl;
+          }
+          get surnameControl(): FormControl {
+            return this.form.get('surname') as FormControl;
+          }
+          get nameControl(): FormControl {
+            return this.form.get('name') as FormControl;
+          }
 }

@@ -33,7 +33,7 @@ export class CreateUpdateRoomComponent {
   constructor() { 
     this.form = this.fb.group({
       id: [{value: this.roomObject?.id || null, disabled: true}],
-      description: [{value: this.roomObject?.description || '', disabled: true}, [Validators.required]],
+      description: [this.roomObject?.description || '', [Validators.required]],
       floorNumber: [this.roomObject?.floorNumber || '', Validators.required],
       number: [this.roomObject?.number || '', Validators.required],
       price: [this.roomObject?.price || '', Validators.required],
@@ -44,7 +44,6 @@ export class CreateUpdateRoomComponent {
 
   onSubmit(){
     this.form.markAllAsTouched();
-    console.log(this.form)
 
     if(!this.form.valid) return;
     const form = this.form.getRawValue();

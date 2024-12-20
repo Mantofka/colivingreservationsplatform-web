@@ -5,6 +5,8 @@
         <p class="description">{{coliving().address}}</p>
         <p class="description">{{coliving().email}}</p>
         <p class="description">{{coliving().description}}</p>
-        <i (click)="onColivingDeleteClick($event)" class="pi pi-trash"></i>
+        @if(!isTenant){
+            <i (click)="onColivingDeleteClick($event)" class="pi pi-trash"></i>
+        }
     </div>
 </div>

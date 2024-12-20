@@ -1,18 +1,16 @@
-<app-form-container-wrapper [title]="this.tenant?.id ? 'Tenant Edit' : 'Tenant creation'">
+<app-form-container-wrapper (submit)="onSubmit()" [submitTitle]="this.tenant?.id ? 'Submit' : 'Create'" [title]="this.tenant?.id ? 'Tenant Edit' : 'Tenant creation'">
     <div class="container">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <app-base-input [label]="'Name'" formControlName="name"></app-base-input>
-            <app-base-input [label]="'Surname'" formControlName="surname"></app-base-input>
-            <app-base-input [label]="'Phone Number'" formControlName="phoneNumber"></app-base-input>
-            <app-base-input [label]="'Email'" formControlName="email"></app-base-input>
+            <app-base-input [formControl]="nameControl" [label]="'Name'" formControlName="name"></app-base-input>
+            <app-base-input [formControl]="surnameControl" [label]="'Surname'" formControlName="surname"></app-base-input>
+            <app-base-input [formControl]="phoneNumberControl" [label]="'Phone Number'" formControlName="phoneNumber"></app-base-input>
+            <app-base-input [formControl]="emailControl" [label]="'Email'" formControlName="email"></app-base-input>
             <div class="input-container">
                 <label>
                     Birthdate
                 </label>
                 <p-calendar formControlName="birthDate" />
             </div>
-
-            <button type="submit" pButton>{{this.tenant?.id ? "Edit" : "Create"}}</button>
         </form>
     </div>
 </app-form-container-wrapper>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, input, Output } from '@angular/core';
 import { ColivingResponseDto } from '../../modules/coliving/models/coliving.model';
+import { RoleEnum } from '../models/roles';
 
 @Component({
   selector: 'app-coliving-card',
@@ -24,5 +25,9 @@ export class ColivingCardComponent {
   onColivingDeleteClick(event: Event){
     event.stopPropagation();
     this.onDeleteClick.emit(this.coliving());
+  }
+
+  get isTenant() {
+    return localStorage.getItem('role') === RoleEnum.Tenant;
   }
 }

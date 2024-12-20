@@ -1,6 +1,8 @@
-import { Component, EventEmitter, input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, input, Output } from '@angular/core';
 import { TenantResponseDto } from '../models/tenant.model';
 import { CommonModule } from '@angular/common';
+import { TenantService } from '../services/tenant.service';
+import { RoomService } from '../../rooms/services/room.service';
 
 @Component({
   selector: 'app-tenant-list-card',
@@ -12,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class TenantListCardComponent {
   tenant = input<TenantResponseDto>();
   permitDeleteAction = input(false);
+  roomService = inject(RoomService);
   
   @Output()
   onClick: EventEmitter<TenantResponseDto> = new EventEmitter<TenantResponseDto>();

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ColivingService } from '../services/coliving.service';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -45,10 +45,10 @@ export class CreateUpdateColivingComponent {
     });
     this.form = this.fb.group({
       id: [{value: this.colivingObject?.id || null, disabled: true}],
-      name: [{value: this.colivingObject?.name || '', disabled: true}],
-      address: [this.colivingObject?.address || ''],
-      description: [this.colivingObject?.description || ''],
-      email: [this.colivingObject?.email || ''],
+      name: [this.colivingObject?.name || '', Validators.required],
+      address: [this.colivingObject?.address || '', Validators.required],
+      description: [this.colivingObject?.description || '', Validators.required],
+      email: [this.colivingObject?.email || '', Validators.required],
       userId: [this.colivingObject?.userId || null],
     });
   }
@@ -58,7 +58,10 @@ export class CreateUpdateColivingComponent {
   }
 
   onSubmit(){
+    if(!this.form.valid) return;
+
     const form = this.form.getRawValue();
+
     if(this.colivingObject?.id){
       this.colivingService.updateColiving(this.colivingObject.id, form).subscribe({
         next: () => {
@@ -86,6 +89,20 @@ export class CreateUpdateColivingComponent {
   routeAfterAction(){
     this.router.navigate(['/dashboard']);
   }
+
+    get nameControl(): FormControl {
+      return this.form.get('name') as FormControl;
+    }
+
+      get addressControl(): FormControl {
+        return this.form.get('address') as FormControl;
+      }
+      get descriptionControl(): FormControl {
+        return this.form.get('description') as FormControl;
+      }
+      get emailControl(): FormControl {
+        return this.form.get('email') as FormControl;
+      }
 }
 
 

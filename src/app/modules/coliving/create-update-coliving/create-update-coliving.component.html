@@ -1,15 +1,14 @@
-<app-form-container-wrapper [title]="this.colivingObject?.id ? 'Coliving Edit' : 'Coliving creation'">
+<app-form-container-wrapper [submitTitle]="this.colivingObject?.id ? 'Submit' : 'Create'" (submit)="onSubmit()" [title]="this.colivingObject?.id ? 'Coliving Edit' : 'Coliving creation'">
     <div class="container">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <app-base-input [label]="'Coliving name'" formControlName="name"></app-base-input>
-            <app-base-input [label]="'Address'" formControlName="address"></app-base-input>
-            <app-base-input [label]="'Description'" formControlName="description"></app-base-input>
-            <app-base-input [label]="'Email'" formControlName="email"></app-base-input>
+            <app-base-input [formControl]="nameControl" [label]="'Coliving name'" formControlName="name"></app-base-input>
+            <app-base-input [formControl]="addressControl" [label]="'Address'" formControlName="address"></app-base-input>
+            <app-base-input [formControl]="descriptionControl" [label]="'Description'" formControlName="description"></app-base-input>
+            <app-base-input [formControl]="emailControl" [label]="'Email'" formControlName="email"></app-base-input>
             <div *ngIf="isAdministrator" class="labas">
                 <label>Coliving Owner</label>
                 <p-select formControlName="userId" [options]="ownersList()" optionValue="id" optionLabel="fullName" placeholder="Select a Coliving Owner" />
             </div>
-            <button class="button" type="submit" pButton>{{this.colivingObject?.id ? "Edit" : "Create"}}</button>
         </form>
     </div>
 </app-form-container-wrapper>

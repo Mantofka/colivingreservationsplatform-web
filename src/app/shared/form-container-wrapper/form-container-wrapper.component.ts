@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, model, output } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { Location } from '@angular/common';
 
@@ -13,8 +13,14 @@ export class FormContainerWrapperComponent {
   location = inject(Location);
   title = input.required();
   backTitle = input('Back');
+  submit = output();
+  submitTitle = input('');
 
   onBackClick() {
     this.location.back()
+  }
+
+  onSubmitClick() {
+    this.submit.emit();
   }
 }

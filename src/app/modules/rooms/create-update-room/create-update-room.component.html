@@ -1,4 +1,4 @@
-<app-form-container-wrapper [title]="this.roomObject?.id ? 'Room edit' : 'Room creation'">
+<app-form-container-wrapper [submitTitle]="this.roomObject?.id ? 'Submit' : 'Create'"[title]="this.roomObject?.id ? 'Room edit' : 'Room creation'">
 <div class="container">
     <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
         <app-base-input [formControl]="descriptionControl" [label]="'Room description'" formControlName="description"></app-base-input>
