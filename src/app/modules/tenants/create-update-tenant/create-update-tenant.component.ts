@@ -32,7 +32,7 @@ export class CreateUpdateTenantComponent {
       id: [{value: this.tenant?.id || null, disabled: true}],
       name: [this.tenant?.name || '', Validators.required],
       surname: [this.tenant?.surname || '', Validators.required],
-      phoneNumber: [this.tenant?.phoneNumber || '', Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])],
+      phoneNumber: [this.tenant?.phoneNumber || '', Validators.compose([Validators.required])],
       birthDate: [this.tenant ? new Date(this.tenant?.birthDate) : null],
       email: [this.tenant?.email || '', Validators.required],
     });
